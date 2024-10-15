@@ -18,5 +18,5 @@ public class Courier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer courierId;
-    
+
 }

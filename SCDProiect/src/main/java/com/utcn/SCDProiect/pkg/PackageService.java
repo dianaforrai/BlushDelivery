@@ -30,7 +30,7 @@ public class PackageService {
         Optional<Package> packageFound = packageRepository.findById(packageId);
 
         if (!packageFound.isPresent()) {
-           return new Package();
+            return new Package();
         }
 
         Package currentPackage = packageFound.get();
@@ -64,8 +64,8 @@ public class PackageService {
     }
 
 
-public List<Package> getPackagesForCourier(Courier courier){
+    public List<Package> getPackagesForCourier(Courier courier) {
         return packageRepository.findByCourier(courier);
-}
+    }
 }
 

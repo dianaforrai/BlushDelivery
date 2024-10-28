@@ -1,9 +1,6 @@
 package com.utcn.SCDProiect.courier;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +14,9 @@ public class Courier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer courierId;
+    private Integer id;
     private String name;
     private String email;
-    private Courier manager;
 
     public String getEmail() {
         return email;
@@ -30,12 +26,12 @@ public class Courier {
         this.email = email;
     }
 
-    public Integer getCourierId() {
-        return courierId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCourierId(Integer courierId) {
-        this.courierId = courierId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -45,6 +41,10 @@ public class Courier {
     public void setName(String name) {
         this.name = name;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id", nullable = false)
+    private Courier manager;
 
     public Courier getManager() {
         return manager;

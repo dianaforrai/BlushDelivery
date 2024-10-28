@@ -21,4 +21,12 @@ public class CourierController {
     public List<Courier> getAllCouriers(){
         return courierService.getAllCouriers();
     }
+    @GetMapping("/available")
+    public List<Courier> getAllCouriersWithoutPendingPackages() {
+        return courierService.getAllCouriersWithoutPendingPackages();
+    }
+    @GetMapping("/info")
+    public List<Object[]> getAllManagersAndDeliveredNumber() {
+        return courierService.getAllManagersAndDeliveredNumber();
+    }
 }

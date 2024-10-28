@@ -3,6 +3,7 @@ package com.utcn.SCDProiect.courier;
 import com.utcn.SCDProiect.courier.Courier;
 import com.utcn.SCDProiect.pkg.Package;
 import com.utcn.SCDProiect.pkg.PackageRepository;
+import com.utcn.SCDProiect.pkg.PackageStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,5 +65,12 @@ public class CourierService {
         return isDeleted;
     }
 
+    public List<Courier> getAllCouriersWithoutPendingPackages() {
+        return courierRepository.findAllCouriersWithoutPendingPackages(PackageStatus.PENDING);
+    }
+
+    public List<Object[]> getAllManagersAndDeliveredNumber() {
+        return courierRepository.findAllManagersAndDeliveredNumber(PackageStatus.DELIVERED);
+    }
 }
 

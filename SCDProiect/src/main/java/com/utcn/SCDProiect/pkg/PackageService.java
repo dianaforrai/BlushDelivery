@@ -64,10 +64,6 @@ public class PackageService {
     }
 
 
-    //TODO : chestiile din readme
-
-
-
 public List<Package> getPackagesForCourier(Courier courier){
         return packageRepository.findByCourier(courier);
 }

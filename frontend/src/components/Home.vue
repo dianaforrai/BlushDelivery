@@ -1,5 +1,5 @@
 <template>
-asdasdasdasda
+TE IUBESC SI ITI TRIMIT UN URSULET
 </template>
 
 <script>

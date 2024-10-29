@@ -108,6 +108,9 @@ button[class="btn btn-primary"]:hover::before {
 }
   .main-navigation {
     color : rgb(99, 44, 52);
-    text-decoration: none;
+}
+
+#content {
+  text-align: center;
 }
 

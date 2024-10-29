@@ -3,6 +3,10 @@
       <form class="main-form">
         <h1 class="text-center">Register</h1>
         <div class="mb-3">
+          <label for="inputName" class="form-label">Name</label>
+          <input v-model="name" type="text" class="form-control" id="inputName" required>
+        </div>
+        <div class="mb-3">
           <label for="inputEmail" class="form-label">Email</label>
           <input v-model="email" type="email" class="form-control" id="inputEmail" required>
         </div>
@@ -37,6 +41,8 @@
     </div>
   </template>
   <script>
+import { name } from '@vue/eslint-config-prettier/skip-formatting';
+
 
 export default {
   name: 'UserRegistration',
@@ -45,6 +51,7 @@ export default {
   },
   data() {
     return {
+      name: '',
       email: '',
       password: '',
       repeatPassword: '',
@@ -56,7 +63,41 @@ export default {
     register(event) {
         event.preventDefault();
     },  
+    register(event) {
+      event.preventDefault();
+      if (this.password !== this.repeatPassword) {
+        this.toastMessage = 'Passwords do not match!';
+        this.showToast = true;
+
+        setTimeout(() => {
+          this.showToast = false;
+        }, 5000);
+
+        return;
+      }
+
+      axios.post('http://localhost:5173/register', {
+        email: this.email,
+        username : this.username,
+        password: this.password
+      })
+        .then(response => {
+          if (response.data.success) {
+            // The registration was successful
+            this.$router.push('/login');
+          }
+        })
+        .catch(error => {
+          this.toastMessage = 'Invalid registration: ' + error.response.data.error;
+          this.showToast = true;
+
+          setTimeout(() => {
+            this.showToast = false;
+          }, 5000);
+        });
+    }
+  }
 }
-}
+
 
 </script>

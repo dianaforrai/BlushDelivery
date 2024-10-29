@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/package")
+@RequestMapping("/courier")
 @CrossOrigin
 public class CourierController {
 

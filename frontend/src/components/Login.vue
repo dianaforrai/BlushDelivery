@@ -3,8 +3,8 @@
       <form class="main-form">
         <h1 class="text-center">Login</h1>
         <div class="mb-3">
-          <label for="inputUsername" class="form-label">Username</label>
-          <input v-model="username" type="text" class="form-control" id="inputUsername" required>
+          <label for="inputEmail" class="form-label">Email</label>
+          <input v-model="email" type="email" class="form-control" id="inputEmail" required>
         </div>
         <div class="mb-3">
           <label for="inputPassword" class="form-label">Password</label>
@@ -31,13 +31,13 @@
   <script>
 
   export default {
-  name: 'UserLogin',
+  name: 'Login',
   props: {
     msg: String
   },
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
       showToast: false,
       toastMessage: ''

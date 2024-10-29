@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <nav> <ul>
+    <nav v-if="$route.path !== '/login' && $route.path !== '/register'">
+    <ul>
       <li><RouterLink to="/">Home</RouterLink></li>
       <li><RouterLink to="/view-packages">View Packages</RouterLink></li>
       <li><RouterLink to="/available-packages">Available Packages</RouterLink></li>     

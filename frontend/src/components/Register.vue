@@ -3,8 +3,8 @@
       <form class="main-form">
         <h1 class="text-center">Register</h1>
         <div class="mb-3">
-          <label for="inputUsername" class="form-label">Username</label>
-          <input v-model="username" type="text" class="form-control" id="inputUsername" required>
+          <label for="inputEmail" class="form-label">Email</label>
+          <input v-model="email" type="email" class="form-control" id="inputEmail" required>
         </div>
         <div class="mb-3">
           <label for="inputRepeatPassword" class="form-label">Password</label>
@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
       repeatPassword: '',
       showToast: false,

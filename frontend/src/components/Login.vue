@@ -47,6 +47,7 @@
     login(event) {
         event.preventDefault();
     },
+    
   }
 }
 </script>

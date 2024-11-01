@@ -12,6 +12,7 @@ import DeletePackages from '../components/DeletePackages.vue'
 
 const routes = [
   { path : '/', component : Home },
+  { path : '/home', component : Home },
   { path : '/view-packages', component : ViewPackages },
   { path : '/available-packages', component : AvailablePackages },
   { path : '/add-package', component : AddPackages },

@@ -1,17 +1,28 @@
 <template>
   <div id="app">
     <nav v-if="$route.path !== '/login' && $route.path !== '/register'">
-    <ul class = "lista">
-      <li class="main-navigation"><RouterLink to="/"><span class="main-navigation">Home</span></RouterLink></li>
-      <li class="main-navigation"> <RouterLink to="/add-package"><span class="main-navigation">Add Package</span></RouterLink></li> 
-      <li class="main-navigation"><RouterLink to="/delete-packages"><span class="main-navigation">Delete Package</span></RouterLink></li>
-      <li class="main-navigation"><RouterLink to="/view-packages"><span class="main-navigation">View Packages</span></RouterLink></li>
-      <li class="main-navigation"><RouterLink to="/available-packages"><span class="main-navigation">Available Packages</span></RouterLink></li>     
-      <li class="main-navigation"><RouterLink to="/deliver-package"><span class="main-navigation">Deliver Package</span></RouterLink></li>
-      <li class="main-navigation"><RouterLink to="/assign-package"><span class="main-navigation">Assign Package</span></RouterLink></li>
-      <li class="main-navigation"><RouterLink to="/set-manager"><span class="main-navigation">Set Manager</span></RouterLink></li>
-    </ul>
-    <button @click="logout()" class="btn-logout"> <i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/view-packages">View Packages</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/available-packages">Available Packages</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/add-package">Add Package</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/deliver-package">Deliver Package</RouterLink>
+        </li>
+        <li class="nav-item logout-item">
+          <button @click="logout()" class="btn-logout">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </li>
+      </ul>
     </nav>
     <RouterView />
   </div>
@@ -31,6 +42,35 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-item {
+  padding: 14px 20px;
+}
+
+.nav-item a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-item a:hover {
+  background-color: #ddd;
+  color: rgb(172, 72, 89);
+}
+
 .btn-logout:hover {
   transform: translateY(-5px);
 }

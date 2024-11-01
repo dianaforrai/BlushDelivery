@@ -1,6 +1,6 @@
 <template>
    <div>
-     <table class="table table-striped">
+     <table class="table table-striped pink-table">
        <thead>
          <tr>
            <th scope="col">#</th>
@@ -35,7 +35,28 @@
    }
  };
  </script>
- 
+
  <style scoped>
- /* Add any necessary styles here */
+
+.pink-table {
+  border: 1px solid pink;
+}
+
+.pink-table th {
+  background-color: rgb(99, 44, 52);
+  color: white;
+}
+
+.pink-table td {
+  background-color: #ffe6f2;
+  color: black;
+}
+
+.pink-table tr:nth-child(even) {
+  background-color: #ffccdd;
+}
+
+.pink-table tr:hover {
+  background-color: #ff99bb;
+}
  </style>

@@ -8,6 +8,7 @@ import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
 import AssignPackage from '../components/AssignPackage.vue'  
 import SetManager from '../components/SetManager.vue'
+import DeletePackages from '../components/DeletePackages.vue'
 
 const routes = [
   { path : '/', component : Home },
@@ -18,7 +19,8 @@ const routes = [
   { path : '/login', component : Login },
   { path : '/register', component : Register },
   { path : '/assign-package', component : AssignPackage },
-  { path : '/set-manager', component : SetManager }
+  { path : '/set-manager', component : SetManager },
+  { path : '/delete-packages', component : DeletePackages }
 ];
 
 const router = createRouter({

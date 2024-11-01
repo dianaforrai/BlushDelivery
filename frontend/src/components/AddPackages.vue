@@ -23,6 +23,7 @@
                             </select>
         </div>
     </div>
+    <button @click="addPackage" class="btn-addpackage"> <i class="fa-solid fa-right-from-bracket"></i> Add Package</button>
     </template>
     
     <script>
@@ -61,5 +62,35 @@
 
 .custom-checkbox:active {
   background-color: rgb(99, 44, 52); 
+}
+</style>
+<style scoped>
+.btn-addpackage:hover {
+  transform: translateY(-5px);
+}
+
+.main-navigation li {
+  color: rgb(172, 72, 89); /* Change this to your desired color */
+}
+
+.btn-addpackage {
+  position: middle;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgb(172, 72, 89);
+  color: white;
+  border-color: lightpink;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px 1px var(--box-shadow-color);
+  animation: slide-up-fade-in 1s ease;
+  transition: transform 0.5s ease;
+}
+.lista {
+  list-style-type: none;
+  text-decoration: none;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <div>
         <button @click="start()" class="btn-start"> <i class="fa-solid fa-right-from-bracket"></i>Let's Get Delivering</button>
+        
     </div>
 TE IUBESC SI ITI TRIMIT UN URSULET
 

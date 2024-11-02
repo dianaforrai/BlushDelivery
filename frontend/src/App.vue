@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <nav v-if="$route.path !== '/login' && $route.path !== '/register'">
+    <nav class="navbar" v-if="$route.path !== '/login' && $route.path !== '/register'">
       <ul class="nav-list">
         <li class="nav-item">
           <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/add-package">Add Package</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/delete-packages">Delete Package</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink to="/view-packages">View Packages</RouterLink>
@@ -11,19 +17,21 @@
         <li class="nav-item">
           <RouterLink to="/available-packages">Available Packages</RouterLink>
         </li>
-        <li class="nav-item">
-          <RouterLink to="/add-package">Add Package</RouterLink>
-        </li>
+       
         <li class="nav-item">
           <RouterLink to="/deliver-package">Deliver Package</RouterLink>
         </li>
-        <li class="nav-item logout-item">
-          <button @click="logout()" class="btn-logout">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-          </button>
+        <li class="nav-item">
+          <RouterLink to="/assign-package">Assign Package</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink to="/set-manager">Set Manager</RouterLink>
         </li>
       </ul>
     </nav>
+    <button @click="logout()" class="btn-logout">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
     <RouterView />
   </div>
 
@@ -43,8 +51,7 @@ export default {
 
 <style scoped>
 .navbar {
-  background-color: #333;
-  overflow: hidden;
+  padding-bottom: 50px;
 }
 
 .nav-list {

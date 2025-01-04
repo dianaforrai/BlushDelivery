@@ -59,7 +59,8 @@ export default {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .nav-item {
@@ -76,6 +77,7 @@ export default {
 .nav-item a:hover {
   background-color: #ddd;
   color: rgb(172, 72, 89);
+  border-radius: 10px;
 }
 
 .btn-logout:hover {

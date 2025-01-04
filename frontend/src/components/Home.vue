@@ -1,5 +1,6 @@
 <template>
     <div>
+      <img :src="logo"class="logo">
         <button @click="start()" class="btn-start"> <i class="fa-solid fa-right-from-bracket"></i>Let's Get Delivering</button>
         
     </div>
@@ -8,8 +9,14 @@ TE IUBESC SI ITI TRIMIT UN URSULET
 </template>
 
 <script>
+import logo from '../assets/blushdelivery.svg';
 export default {
   name: 'Home',
+  data() {
+    return {
+      logo: logo
+    };
+  },
   methods: {
     start() {
       this.$router.push('/available-packages');

@@ -14,7 +14,7 @@ public class CourierController {
     private CourierService courierService;
 
     @PostMapping
-    public Courier createCourier(Courier courier){
+    public Courier createCourier(@RequestBody Courier courier){
         return courierService.createCourier(courier);
     }
     @GetMapping

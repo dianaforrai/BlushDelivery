@@ -41,8 +41,6 @@
     </div>
   </template>
   <script>
-import { name } from '@vue/eslint-config-prettier/skip-formatting';
-
 
 export default {
   name: 'UserRegistration',

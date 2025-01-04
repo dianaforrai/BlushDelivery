@@ -1,0 +1,132 @@
+[
+    {
+      "id": 1,
+      "courier": {
+        "id": 1,
+        "name": "Courier One",
+        "email": "courier1@example.com",
+        "password": "password1"
+      },
+      "createdOn": "2023-10-01T10:00:00Z",
+      "deliveryAddress": "123 Main St",
+      "payOnDelivery": true,
+      "status": "NEW"
+    },
+    {
+      "id": 2,
+      "courier": {
+        "id": 2,
+        "name": "Courier Two",
+        "email": "courier2@example.com",
+        "password": "password2"
+      },
+      "createdOn": "2023-10-02T11:00:00Z",
+      "deliveryAddress": "456 Elm St",
+      "payOnDelivery": false,
+      "status": "PENDING"
+    },
+    {
+      "id": 3,
+      "courier": {
+        "id": 3,
+        "name": "Courier Three",
+        "email": "courier3@example.com",
+        "password": "password3"
+      },
+      "createdOn": "2023-10-03T12:00:00Z",
+      "deliveryAddress": "789 Oak St",
+      "payOnDelivery": true,
+      "status": "DELIVERED"
+    },
+    {
+      "id": 4,
+      "courier": {
+        "id": 4,
+        "name": "Courier Four",
+        "email": "courier4@example.com",
+        "password": "password4"
+      },
+      "createdOn": "2023-10-04T13:00:00Z",
+      "deliveryAddress": "101 Pine St",
+      "payOnDelivery": false,
+      "status": "NEW"
+    },
+    {
+      "id": 5,
+      "courier": {
+        "id": 5,
+        "name": "Courier Five",
+        "email": "courier5@example.com",
+        "password": "password5"
+      },
+      "createdOn": "2023-10-05T14:00:00Z",
+      "deliveryAddress": "202 Maple St",
+      "payOnDelivery": true,
+      "status": "PENDING"
+    },
+    {
+      "id": 6,
+      "courier": {
+        "id": 6,
+        "name": "Courier Six",
+        "email": "courier6@example.com",
+        "password": "password6"
+      },
+      "createdOn": "2023-10-06T15:00:00Z",
+      "deliveryAddress": "303 Birch St",
+      "payOnDelivery": false,
+      "status": "DELIVERED"
+    },
+    {
+      "id": 7,
+      "courier": {
+        "id": 7,
+        "name": "Courier Seven",
+        "email": "courier7@example.com",
+        "password": "password7"
+      },
+      "createdOn": "2023-10-07T16:00:00Z",
+      "deliveryAddress": "404 Cedar St",
+      "payOnDelivery": true,
+      "status": "NEW"
+    },
+    {
+      "id": 8,
+      "courier": {
+        "id": 8,
+        "name": "Courier Eight",
+        "email": "courier8@example.com",
+        "password": "password8"
+      },
+      "createdOn": "2023-10-08T17:00:00Z",
+      "deliveryAddress": "505 Walnut St",
+      "payOnDelivery": false,
+      "status": "PENDING"
+    },
+    {
+      "id": 9,
+      "courier": {
+        "id": 9,
+        "name": "Courier Nine",
+        "email": "courier9@example.com",
+        "password": "password9"
+      },
+      "createdOn": "2023-10-09T18:00:00Z",
+      "deliveryAddress": "606 Chestnut St",
+      "payOnDelivery": true,
+      "status": "DELIVERED"
+    },
+    {
+      "id": 10,
+      "courier": {
+        "id": 10,
+        "name": "Courier Ten",
+        "email": "courier10@example.com",
+        "password": "password10"
+      },
+      "createdOn": "2023-10-10T19:00:00Z",
+      "deliveryAddress": "707 Spruce St",
+      "payOnDelivery": false,
+      "status": "NEW"
+    }
+  ]

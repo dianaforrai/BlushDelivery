@@ -26,6 +26,7 @@
 <script>
 import Packages from '../assets/packages.json';
 import axios from 'axios';
+
 export default {
   name: 'ViewPackages',
   data() {

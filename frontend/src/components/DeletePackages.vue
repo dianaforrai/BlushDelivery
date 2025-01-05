@@ -1,5 +1,4 @@
 <template>
-  BARGA ESTE URSULETUL MEU SI PE EL NU IL STERG
   <div class="container-flowup">
 
     <div class="mb-3">
@@ -28,6 +27,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'DeletePackages',
   data() {

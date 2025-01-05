@@ -1,5 +1,4 @@
 <template>
-  BARGA ESTE URSULETUL MEU SI PE EL IL IUUUUBESC
   <div class="container-flowup">
     <div class="mb-3">
       <label for="type" class="form-label">Couriers</label>

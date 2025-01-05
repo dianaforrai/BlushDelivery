@@ -5,7 +5,6 @@
       Delivering</v-btn>
 
   </div>
-  TE IUBESC SI ITI TRIMIT UN URSULET
 
 </template>
 

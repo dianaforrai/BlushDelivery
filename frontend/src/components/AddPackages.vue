@@ -1,5 +1,4 @@
 <template>
-  URSULET PENTRU BARGA IUBITUL MEU
   <div class="container container-flowup">
     <input type="text" class="form-control packages-input" v-model="currentPackage.awb" placeholder="Enter AWB" />
     <input type="text" class="form-control packages-input" v-model="currentPackage.deliveryAddress"
@@ -44,6 +43,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'AddPackages',
   props: {

@@ -1,5 +1,4 @@
 <template>
-  AM TRIMIS URSULETUL LA IUBITUL MEU
   <div class="container-flowup">
     <div class="mb-3">
       <label for="type" class="form-label">Packages</label>

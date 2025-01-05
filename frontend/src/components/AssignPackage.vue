@@ -1,5 +1,4 @@
 <template>
-  BARGA ESTE URSULETUL MEU SI PE EL IL IUUUUBESC TARE TARE TARE
   <div class="container-flowup">
 
     <div class="mb-3">

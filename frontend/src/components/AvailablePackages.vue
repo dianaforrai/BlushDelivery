@@ -1,6 +1,4 @@
 <template>
-  URSULETUL DE LA IUBITA E PE DRUM
-
   <div class="container-flowup">
     <table class="table table-striped pink-table">
       <thead>
@@ -27,13 +25,31 @@
 
 <script>
 import Packages from '../assets/packages.json';
+import axios from 'axios';
 
 export default {
   name: 'AvailablePackages',
   data() {
     return {
-      packages: Packages
+      packages: []
     };
+  },
+  created() {
+    this.fetchPackages();
+  },
+  methods: {
+    fetchPackages() {
+      axios.get(`http://localhost:8083/packages`)
+        .then(response => {
+          console.log(response);
+          var packages = response.data;
+          packages = packages.filter(pack => pack.status === 'NEW');
+          this.packages = packages;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   }
 };
 </script>

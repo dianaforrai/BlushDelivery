@@ -91,6 +91,7 @@ export default {
             this.showToast = false;
           }, 5000);
         });
+      this.id = '';
     }
   }
 }

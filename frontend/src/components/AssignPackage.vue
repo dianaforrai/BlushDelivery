@@ -1,18 +1,17 @@
 <template>
   <div class="container-flowup">
-
     <div class="mb-3">
       <label for="type" class="form-label">Couriers</label>
-      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-        <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> {{ courier.email }} </option>
-
-
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default" v-model="idCourier">
+        <option value="" disabled>Select a courier...</option>
+        <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> Email: {{ courier.email }}, Name: {{ courier.name }} </option>
       </select>
     </div>
     <div class="mb-3">
       <label for="type" class="form-label">Packages</label>
-      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-        <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAdress }} </option>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default" v-model="idPack">
+        <option value="" disabled>Select a package...</option>
+        <option v-for="pack in packages" :key="pack.id" :value="pack.id">AWB: {{ pack.awb }}, Address: {{ pack.deliveryAddress }}</option>
       </select>
     </div>
     <v-btn @click="set" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Assign</v-btn>
@@ -20,9 +19,48 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'SetManager',
-}
+  data() {
+    return {
+      packages: [],
+      couriers: [],
+      idPack: '',
+      idCourier: '',
+      showToast: false,
+      toastMessage: ''
+    }
+  },
+  created() {
+    this.fetchPackages();
+    this.fetchCouriers();
+  },
+  methods: {
+    fetchPackages() {
+      axios.get(`http://localhost:8083/packages`)
+        .then(response => {
+          console.log(response);
+          this.packages = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    fetchCouriers() {
+      axios.get(`http://localhost:8083/couriers`)
+        .then(response => {
+          console.log(response);
+          this.couriers = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+};
+
 </script>
 <style scoped>
 .btn-set:hover {

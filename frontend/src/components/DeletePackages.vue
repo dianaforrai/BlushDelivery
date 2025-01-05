@@ -6,7 +6,8 @@
       <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default"
         v-model="id">
         <option value="" disabled selected>Select a package...</option>
-        <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.awb, pack.deliveryAddress }} </option>
+        <option v-for="pack in packages" :key="pack.id" :value="pack.id">AWB: {{ pack.awb }}, Address: {{ pack.deliveryAddress }}
+        </option>
       </select>
     </div>
     <v-btn @click="deletePackage" class="btn-deletepackage"> <i class="fa-solid fa-right-from-bracket"></i>Delete

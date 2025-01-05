@@ -17,7 +17,7 @@
         <li class="nav-item">
           <RouterLink to="/available-packages">Available Packages</RouterLink>
         </li>
-       
+
         <li class="nav-item">
           <RouterLink to="/deliver-package">Deliver Package</RouterLink>
         </li>
@@ -30,8 +30,8 @@
       </ul>
     </nav>
     <button @click="logout()" class="btn-logout">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-          </button>
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
     <RouterView />
   </div>
 
@@ -42,10 +42,10 @@ export default {
   name: 'App',
 
   methods: {
-     logout() {
-            this.$router.push('/login');
-        }
-      }
+    logout() {
+      this.$router.push('/login');
+    }
+  }
 }
 </script>
 
@@ -85,7 +85,8 @@ export default {
 }
 
 .main-navigation li {
-  color: rgb(172, 72, 89); /* Change this to your desired color */
+  color: rgb(172, 72, 89);
+  /* Change this to your desired color */
 }
 
 .btn-logout {
@@ -104,6 +105,7 @@ export default {
   animation: slide-up-fade-in 1s ease;
   transition: transform 0.5s ease;
 }
+
 .lista {
   list-style-type: none;
   text-decoration: none;

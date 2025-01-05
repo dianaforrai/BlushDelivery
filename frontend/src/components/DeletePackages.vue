@@ -1,13 +1,16 @@
 <template>
   BARGA ESTE URSULETUL MEU SI PE EL NU IL STERG
-  <div class="mb-3">
-    <label for="type" class="form-label">Packages</label>
-    <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-      <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAddress }} </option>
-    </select>
+  <div class="container-flowup">
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Packages</label>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
+        <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAddress }} </option>
+      </select>
+    </div>
+    <v-btn @click="deletePackage" class="btn-deletepackage"> <i class="fa-solid fa-right-from-bracket"></i>Delete
+      Package</v-btn>
   </div>
-  <button @click="deletePackage" class="btn-deletepackage"> <i class="fa-solid fa-right-from-bracket"></i>Delete
-    Package</button>
 </template>
 
 <script>

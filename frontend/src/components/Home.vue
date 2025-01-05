@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="container-flowup">
     <img :src="logo" class="logo">
-    <button @click="start()" class="btn-start"> <i class="fa-solid fa-right-from-bracket"></i>Let's Get
-      Delivering</button>
+    <v-btn @click="start()" class="btn-start"> <i class="fa-solid fa-right-from-bracket"></i>Let's Get
+      Delivering</v-btn>
 
   </div>
   TE IUBESC SI ITI TRIMIT UN URSULET

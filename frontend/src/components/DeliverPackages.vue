@@ -1,15 +1,15 @@
 <template>
   AM TRIMIS URSULETUL LA IUBITUL MEU
-
-  <div class="mb-3">
-    <label for="type" class="form-label">Packages</label>
-    <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-      <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAddress }} </option>
-    </select>
+  <div class="container-flowup">
+    <div class="mb-3">
+      <label for="type" class="form-label">Packages</label>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
+        <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAddress }} </option>
+      </select>
+    </div>
+    <v-btn @click="deliverPackage" class="btn-deliverpackage"> <i class="fa-solid fa-right-from-bracket"></i>Deliver
+      Package</v-btn>
   </div>
-  <button @click="deliverPackage" class="btn-deliverpackage"> <i class="fa-solid fa-right-from-bracket"></i>Deliver
-    Package</button>
-
 </template>
 
 

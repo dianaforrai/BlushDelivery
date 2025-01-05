@@ -1,7 +1,7 @@
 <template>
   URSULETUL DE LA IUBITA E PE DRUM
 
-  <div>
+  <div class="container-flowup">
     <table class="table table-striped pink-table">
       <thead>
         <tr>

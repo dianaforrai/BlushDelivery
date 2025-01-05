@@ -1,20 +1,22 @@
 <template>
   BARGA ESTE URSULETUL MEU SI PE EL IL IUUUUBESC
-  <div class="mb-3">
-    <label for="type" class="form-label">Couriers</label>
-    <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-      <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> {{ courier.email }} </option>
+  <div class="container-flowup">
+    <div class="mb-3">
+      <label for="type" class="form-label">Couriers</label>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
+        <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> {{ courier.email }} </option>
 
 
-    </select>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Managers</label>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
+        <option v-for="manager in managers" :key="manager.id" :value="manager.id"> {{ manager.email }} </option>
+      </select>
+    </div>
+    <v-btn @click="set" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Set</v-btn>
   </div>
-  <div class="mb-3">
-    <label for="type" class="form-label">Managers</label>
-    <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-      <option v-for="manager in managers" :key="manager.id" :value="manager.id"> {{ manager.email }} </option>
-    </select>
-  </div>
-  <button @click="set" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Set</button>
 </template>
 
 <script>

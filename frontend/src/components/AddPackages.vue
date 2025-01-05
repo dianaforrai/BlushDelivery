@@ -1,6 +1,6 @@
 <template>
   URSULET PENTRU BARGA IUBITUL MEU
-  <div class="container">
+  <div class="container container-flowup">
     <div class="mb-3">
       <label for="deliveryAddress" class="form-label">Delivery address</label>
       <input v-model="deliveryAddress" type="text" class="form-control" id="deliveryAddress" required>
@@ -22,9 +22,9 @@
         <option value="DELIVERED">Delivered</option>
       </select>
     </div>
+    <v-btn @click="addPackage" class="btn-addpackage"> <i class="fa-solid fa-right-from-bracket"></i> Add
+      Package</v-btn>
   </div>
-  <button @click="addPackage" class="btn-addpackage"> <i class="fa-solid fa-right-from-bracket"></i> Add
-    Package</button>
 </template>
 
 <script>
@@ -49,6 +49,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .custom-checkbox {
   background-color: rgb(99, 44, 52);
@@ -59,17 +60,8 @@ export default {
   cursor: pointer;
 }
 
-.custom-checkbox:hover {
-  background-color: rgb(99, 44, 52);
-}
-
 .custom-checkbox:active {
   background-color: rgb(99, 44, 52);
-}
-</style>
-<style scoped>
-.btn-addpackage:hover {
-  transform: translateY(-5px);
 }
 
 .main-navigation li {
@@ -78,8 +70,8 @@ export default {
 }
 
 .btn-addpackage {
-  position: middle;
-  top: 1rem;
+  position: relative;
+  top: 2rem;
   right: 1rem;
   background-color: rgb(172, 72, 89);
   color: white;

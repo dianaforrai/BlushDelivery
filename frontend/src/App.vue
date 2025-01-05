@@ -29,9 +29,9 @@
         </li>
       </ul>
     </nav>
-    <button @click="logout()" class="btn-logout">
+    <v-btn @click="logout()" class="btn-logout">
       <i class="fa-solid fa-right-from-bracket"></i> Logout
-    </button>
+    </v-btn>
     <RouterView />
   </div>
 
@@ -61,7 +61,9 @@ export default {
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 100%;
+  font-size: 1.2rem;
 }
 
 .nav-item {
@@ -111,4 +113,6 @@ export default {
   list-style-type: none;
   text-decoration: none;
 }
+
+
 </style>

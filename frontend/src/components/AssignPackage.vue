@@ -1,20 +1,23 @@
 <template>
   BARGA ESTE URSULETUL MEU SI PE EL IL IUUUUBESC TARE TARE TARE
-  <div class="mb-3">
-    <label for="type" class="form-label">Couriers</label>
-    <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-      <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> {{ courier.email }} </option>
+  <div class="container-flowup">
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Couriers</label>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
+        <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> {{ courier.email }} </option>
 
 
-    </select>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Packages</label>
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
+        <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAdress }} </option>
+      </select>
+    </div>
+    <v-btn @click="set" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Assign</v-btn>
   </div>
-  <div class="mb-3">
-    <label for="type" class="form-label">Packages</label>
-    <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default">
-      <option v-for="pack in packages" :key="pack.id" :value="pack.id"> {{ pack.deliveryAdress }} </option>
-    </select>
-  </div>
-  <button @click="set" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Assign</button>
 </template>
 
 <script>

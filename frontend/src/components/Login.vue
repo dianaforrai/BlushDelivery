@@ -39,7 +39,7 @@
 </style>
 
 <script>
-
+import axios from 'axios';
 export default {
   name: 'Login',
   props: {
@@ -56,6 +56,37 @@ export default {
   methods: {
     login(event) {
       event.preventDefault();
+      if (this.email === '' || this.password === '') {
+        this.toastMessage = 'Please fill in all fields!';
+        this.showToast = true;
+
+        setTimeout(() => {
+          this.showToast = false;
+        }, 5000);
+
+        return;
+      }
+      axios.post('http://localhost:8083/couriers/login', {
+        email: this.email,
+        password: this.password
+      })
+        .then(response => {
+          console.log(response);
+          if (response.data.id) {
+            // The registration was successful
+            localStorage.setItem('user-token', `token${response.data.id}`);
+            this.$router.push('/home');
+          }
+        })
+        .catch(error => {
+          console.log(error.response);
+          this.toastMessage = 'Invalid registration: ' + error.response.data.error;
+          this.showToast = true;
+
+          setTimeout(() => {
+            this.showToast = false;
+          }, 5000);
+        });
     },
 
   }

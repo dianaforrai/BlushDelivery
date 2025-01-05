@@ -43,6 +43,7 @@ export default {
 
   methods: {
     logout() {
+      localStorage.removeItem('user-token');
       this.$router.push('/login');
     }
   }

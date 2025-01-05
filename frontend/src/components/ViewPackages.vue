@@ -25,13 +25,28 @@
 
 <script>
 import Packages from '../assets/packages.json';
-
+import axios from 'axios';
 export default {
   name: 'ViewPackages',
   data() {
     return {
-      packages: Packages
+      packages: []
     };
+  },
+  created() {
+    this.fetchPackages();
+  },
+  methods: {
+    fetchPackages() {
+      axios.get(`http://localhost:8083/packages`)
+        .then(response => {
+          console.log(response);
+          this.packages = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   }
 };
 </script>

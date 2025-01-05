@@ -51,6 +51,7 @@
 </style>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'UserRegistration',
   props: {
@@ -69,9 +70,17 @@ export default {
   methods: {
     register(event) {
       event.preventDefault();
-    },
-    register(event) {
-      event.preventDefault();
+      if (this.email === '' || this.password === '' || this.repeatPassword === '') {
+        this.toastMessage = 'Please fill in all fields!';
+        this.showToast = true;
+
+        setTimeout(() => {
+          this.showToast = false;
+        }, 5000);
+
+        return;
+      }
+
       if (this.password !== this.repeatPassword) {
         this.toastMessage = 'Passwords do not match!';
         this.showToast = true;
@@ -83,18 +92,21 @@ export default {
         return;
       }
 
-      axios.post('http://localhost:5173/register', {
+      axios.post('http://localhost:8083/couriers', {
+        name: this.name,
         email: this.email,
-        username: this.username,
-        password: this.password
+        password: this.password,
+        manager: null
       })
         .then(response => {
-          if (response.data.success) {
+          console.log(response);
+          if (response.data) {
             // The registration was successful
             this.$router.push('/login');
           }
         })
         .catch(error => {
+          console.log(error.response);
           this.toastMessage = 'Invalid registration: ' + error.response.data.error;
           this.showToast = true;
 

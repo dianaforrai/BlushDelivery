@@ -66,6 +66,12 @@ export default {
         this.toastMessage = 'Please select a courier and a manager!';
         this.showToast = true;
       } else {
+        const userConfirmed = window.confirm('Are you sure you want to deliver this package?');
+
+        if (!userConfirmed) {
+          return
+        };
+
         axios.put(`http://localhost:8083/couriers`, null, {
           params: {
             courierId: this.idCourier,

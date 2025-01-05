@@ -78,19 +78,25 @@ export default {
       console.log(this.idCourier);
       const currentPackage = this.packages.find(pack => pack.id === this.idPack);
       const currentCourier = this.couriers.find(courier => courier.id === this.idCourier);
-      
+
       if (!currentPackage || !currentCourier) {
         this.toastMessage = 'Please select a package and a courier to assign!';
         this.showToast = true;
       } else {
+        const userConfirmed = window.confirm('Are you sure you want to deliver this package?');
+
+        if (!userConfirmed) {
+          return
+        };
+
         axios.put(`http://localhost:8083/packages/${currentPackage.id}`, {
-            awb: currentPackage.awb,
-            createdOn: currentPackage.createdOn,
-            deliveryAddress: currentPackage.deliveryAddress,
-            packageEmail: currentPackage.packageEmail,
-            payOnDelivery: currentPackage.payOnDelivery,
-            status: currentPackage.status,
-            courier: currentCourier
+          awb: currentPackage.awb,
+          createdOn: currentPackage.createdOn,
+          deliveryAddress: currentPackage.deliveryAddress,
+          packageEmail: currentPackage.packageEmail,
+          payOnDelivery: currentPackage.payOnDelivery,
+          status: currentPackage.status,
+          courier: currentCourier
         })
           .then(response => {
             console.log(response);
@@ -98,8 +104,8 @@ export default {
 
             this.showToast = true;
             setTimeout(() => {
-            this.showToast = false;
-          }, 5000);
+              this.showToast = false;
+            }, 5000);
           })
           .catch(error => {
             console.error(error);
@@ -107,8 +113,8 @@ export default {
 
             this.showToast = true;
             setTimeout(() => {
-            this.showToast = false;
-          }, 5000);
+              this.showToast = false;
+            }, 5000);
           })
           .finally(() => {
             this.idPack = '';

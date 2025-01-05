@@ -1,76 +1,100 @@
-package com.utcn.SCDProiect.courier;
+package com.utcn.scdproiect.courier;
 
-import com.utcn.SCDProiect.courier.Courier;
-import com.utcn.SCDProiect.pkg.Package;
-import com.utcn.SCDProiect.pkg.PackageRepository;
-import com.utcn.SCDProiect.pkg.PackageStatus;
+import com.utcn.scdproiect.pkg.Package;
+import com.utcn.scdproiect.pkg.PackageStatus;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CourierService {
+    @Autowired
     private CourierRepository courierRepository;
 
-    //CRUD : READ
+    // GetAll
     public List<Courier> getAllCouriers() {
         return courierRepository.findAll();
     }
 
+    // Create
     @Transactional
-    //CRUD : CREATE
-    public Courier createCourier(Courier courier) {
-        return courierRepository.save(courier);
+    public Courier createCourier(Courier newCourier) {
+        if (courierRepository.existsByEmail(newCourier.getEmail())) {
+            throw new IllegalArgumentException("Courier with email " + newCourier.getEmail() + " already exists");
+        }
+        return courierRepository.save(newCourier);
     }
 
-
-    @Transactional
-    public Courier modifyCourierDetails(Integer courierId, Courier newCourierData) {
-        Optional<Courier> courierRecord = courierRepository.findById(courierId);
-
-        if (courierRecord.isEmpty()) {
-            return new Courier();
-        }
-
-        Courier existingCourier = courierRecord.get();
-        existingCourier.setName(newCourierData.getName());
-        existingCourier.setEmail(newCourierData.getEmail());
-        existingCourier.setManager(newCourierData.getManager());
-
-        try {
-            return courierRepository.save(existingCourier);
-        } catch (Exception exception) {
-            System.err.println("Failed to update courier: " + exception.getMessage());
-            return new Courier();
-        }
+    // Login Courier
+    public Courier loginCourier(String email, String password) {
+        return courierRepository.findByEmailAndPassword(email, password)
+                .orElseThrow(() -> new EntityNotFoundException("Courier with email " + email + " and password " + password + " not found"));
     }
+
+    // Update
     @Transactional
-    public boolean removeCourier(Integer id) {
-        boolean isDeleted = false;
+    public Courier updateCourier(Integer id, Courier updatedCourier) {
+        // Validate the input courier
+        if (updatedCourier == null) {
+            throw new IllegalArgumentException("Updated courier cannot be null");
+        }
 
+        return courierRepository.findById(id)
+                .map(existingCourier -> {
+                    existingCourier.setName(updatedCourier.getName());
+                    existingCourier.setEmail(updatedCourier.getEmail());
+                    existingCourier.setPassword(updatedCourier.getPassword());
+                    existingCourier.setManager(updatedCourier.getManager());
+                    return courierRepository.save(existingCourier);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Courier with ID " + id + " not found"));
+    }
+
+    // Delete
+    @Transactional
+    public boolean deleteCourier(Integer id) {
         try {
-            Optional<Courier> courierToRemove = courierRepository.findById(id);
-
-            if (courierToRemove.isPresent()) {
-                courierRepository.delete(courierToRemove.get());
-                isDeleted = true;
+            if (courierRepository.existsById(id)) {
+                courierRepository.deleteById(id);
+                return true;
+            } else {
+                return false;
             }
-        } catch (RuntimeException ex) {
-            System.err.println("Error deleting courier: " + ex.getMessage());
+        } catch (Exception e) {
+            return false;
         }
-
-        return isDeleted;
     }
 
+    // Set manager for courier
+    @Transactional
+    public Courier setManagerForCourier(Integer courierId, Integer managerId) {
+        // Validate the input courier
+        if (courierId < 0 || managerId < 0 || courierId.equals(managerId)) {
+            throw new IllegalArgumentException("Courier ID's cannot be negative or equal");
+        }
+        Courier manager = courierRepository.findById(managerId)
+                .orElseThrow(() -> new EntityNotFoundException("Manager with ID " + managerId + " not found"));
+
+        return courierRepository.findById(courierId)
+                .map(existingCourier -> {
+                    existingCourier.setManager(manager);
+                    return courierRepository.save(existingCourier);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Courier with ID " + courierId + " not found"));
+    }
+
+    // Get couriers without pending packages
     public List<Courier> getAllCouriersWithoutPendingPackages() {
         return courierRepository.findAllCouriersWithoutPendingPackages(PackageStatus.PENDING);
     }
 
+    // Get all managers and delivered number
     public List<Object[]> getAllManagersAndDeliveredNumber() {
         return courierRepository.findAllManagersAndDeliveredNumber(PackageStatus.DELIVERED);
     }
 }
-

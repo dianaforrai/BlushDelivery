@@ -1,4 +1,4 @@
-package com.utcn.SCDProiect;
+package com.utcn.scdproiect;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

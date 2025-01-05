@@ -1,6 +1,7 @@
-package com.utcn.SCDProiect.pkg;
+package com.utcn.scdproiect.pkg;
 
-import com.utcn.SCDProiect.courier.Courier;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.utcn.scdproiect.courier.Courier;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,24 +14,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Package {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "courier_id", nullable = false)
-    private Courier courier;
-
-    @Column(nullable = false, updatable = false)
-    @CreationTimestamp
-    private Date createdOn;
-
-    private String deliveryAddress;
-    private boolean payOnDelivery;
-    private PackageStatus status;
 
     public Integer getId() {
         return id;
@@ -40,6 +27,10 @@ public class Package {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "courier_id", nullable = false)
+    private Courier courier;
+
     public Courier getCourier() {
         return courier;
     }
@@ -47,6 +38,10 @@ public class Package {
     public void setCourier(Courier courier) {
         this.courier = courier;
     }
+
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
+    private Date createdOn;
 
     public Date getCreatedOn() {
         return createdOn;
@@ -56,6 +51,8 @@ public class Package {
         this.createdOn = createdOn;
     }
 
+    private String deliveryAddress;
+
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -64,6 +61,28 @@ public class Package {
         this.deliveryAddress = deliveryAddress;
     }
 
+    private String packageEmail;
+
+    public String getPackageEmail() {
+        return packageEmail;
+    }
+
+    public void setPackageEmail(String packageEmail) {
+        this.packageEmail = packageEmail;
+    }
+
+    private String awb;
+
+    public String getAwb() {
+        return awb;
+    }
+
+    public void setAwb(String awb) {
+        this.awb = awb;
+    }
+
+    private boolean payOnDelivery;
+
     public boolean isPayOnDelivery() {
         return payOnDelivery;
     }
@@ -71,6 +90,8 @@ public class Package {
     public void setPayOnDelivery(boolean payOnDelivery) {
         this.payOnDelivery = payOnDelivery;
     }
+
+    private PackageStatus status;
 
     public PackageStatus getStatus() {
         return status;

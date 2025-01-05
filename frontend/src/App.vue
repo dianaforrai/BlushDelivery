@@ -29,7 +29,7 @@
         </li>
       </ul>
     </nav>
-    <v-btn @click="logout()" class="btn-logout">
+    <v-btn v-if="!['/login', '/register'].includes($route.path)" @click="logout()" class="btn-logout">
       <i class="fa-solid fa-right-from-bracket"></i> Logout
     </v-btn>
     <RouterView />
@@ -113,6 +113,4 @@ export default {
   list-style-type: none;
   text-decoration: none;
 }
-
-
 </style>

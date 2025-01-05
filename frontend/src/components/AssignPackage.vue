@@ -2,19 +2,34 @@
   <div class="container-flowup">
     <div class="mb-3">
       <label for="type" class="form-label">Couriers</label>
-      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default" v-model="idCourier">
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default"
+        v-model="idCourier">
         <option value="" disabled>Select a courier...</option>
-        <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> Email: {{ courier.email }}, Name: {{ courier.name }} </option>
+        <option v-for="courier in couriers" :key="courier.id" :value="courier.id"> Email: {{ courier.email }}, Name: {{
+          courier.name }} </option>
       </select>
     </div>
     <div class="mb-3">
       <label for="type" class="form-label">Packages</label>
-      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default" v-model="idPack">
+      <select class="type-select form-control" aria-label="Type" aria-describedby="inputGroup-sizing-default"
+        v-model="idPack">
         <option value="" disabled>Select a package...</option>
-        <option v-for="pack in packages" :key="pack.id" :value="pack.id">AWB: {{ pack.awb }}, Address: {{ pack.deliveryAddress }}</option>
+        <option v-for="pack in packages" :key="pack.id" :value="pack.id">AWB: {{ pack.awb }}, Address: {{
+          pack.deliveryAddress }}</option>
       </select>
     </div>
-    <v-btn @click="set" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Assign</v-btn>
+    <v-btn @click="assignCourier" class="btn-set"> <i class="fa-solid fa-right-from-bracket"></i>Assign</v-btn>
+  </div>
+
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true"
+    :class="{ 'show': showToast }" style="position: absolute; top: 0; right: 0;">
+    <div class="toast-header">
+      <strong class="me-auto">Notification</strong>
+      <button type="button" class="m1-2 mb-1 btn-close" @click="showToast = false"></button>
+    </div>
+    <div class="toast-body">
+      {{ toastMessage }}
+    </div>
   </div>
 </template>
 
@@ -57,6 +72,49 @@ export default {
         .catch(error => {
           console.error(error);
         });
+    },
+    assignCourier() {
+      console.log(this.idPack);
+      console.log(this.idCourier);
+      const currentPackage = this.packages.find(pack => pack.id === this.idPack);
+      const currentCourier = this.couriers.find(courier => courier.id === this.idCourier);
+      
+      if (!currentPackage || !currentCourier) {
+        this.toastMessage = 'Please select a package and a courier to assign!';
+        this.showToast = true;
+      } else {
+        axios.put(`http://localhost:8083/packages/${currentPackage.id}`, {
+            awb: currentPackage.awb,
+            createdOn: currentPackage.createdOn,
+            deliveryAddress: currentPackage.deliveryAddress,
+            packageEmail: currentPackage.packageEmail,
+            payOnDelivery: currentPackage.payOnDelivery,
+            status: currentPackage.status,
+            courier: currentCourier
+        })
+          .then(response => {
+            console.log(response);
+            this.toastMessage = 'Courier assigned successfully!';
+
+            this.showToast = true;
+            setTimeout(() => {
+            this.showToast = false;
+          }, 5000);
+          })
+          .catch(error => {
+            console.error(error);
+            this.toastMessage = 'An error occurred while assigning the courier!';
+
+            this.showToast = true;
+            setTimeout(() => {
+            this.showToast = false;
+          }, 5000);
+          })
+          .finally(() => {
+            this.idPack = '';
+            this.idCourier = '';
+          });
+      }
     }
   }
 };

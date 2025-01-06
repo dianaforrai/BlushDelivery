@@ -1,5 +1,6 @@
 <template >
 
+<v-text-field v-model="awb" label="Search AWB" class="awb-input"></v-text-field>
 
 barga
 

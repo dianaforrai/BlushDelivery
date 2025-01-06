@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --port 5174",
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "pinia": "^2.2.4",
     "vue": "^3.5.12",

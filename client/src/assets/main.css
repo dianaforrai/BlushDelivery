@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
 /*@import './base.css';*/
 :root {
   /* Color variables */
@@ -8,7 +10,8 @@
   --heading-color: rgb(255, 255, 255);
   --box-shadow-color: #0000007a;
   --logout-color: white;
-  --logout-color-text: rgb(146, 42, 59);;
+  --logout-color-text: rgb(146, 42, 59);
+  ;
   --scrollbar-color: #888;
   --scrollbar-color-hover: #555;
   --scrollbar-color-background: #f1f1f1;
@@ -18,6 +21,7 @@
   /* Normalize CSS */
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
@@ -107,8 +111,9 @@ button[class="btn btn-primary"]:hover::before {
     opacity: 1;
   }
 }
-  .main-navigation {
-    color : rgb(99, 44, 52);
+
+.main-navigation {
+  color: rgb(99, 44, 52);
 }
 
 .home-btn {

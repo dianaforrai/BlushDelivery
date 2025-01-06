@@ -33,7 +33,11 @@ export default {
       this.$router.push('/managers-and-packages');
     },
     searchPackage() {
-      this.$router.push('/search-package');
+      if (this.awb === '') {
+        alert('Please enter an AWB');
+        return;
+      }
+      this.$router.push('/search-package?awb=' + this.awb);
     }
 
   }
@@ -46,6 +50,7 @@ export default {
   margin: 1rem;
   border-radius: 1rem;
   border: 1px solid lightpink;
+  animation: slide-up-fade-in 1s ease;
 }
 
 .btn-primary:hover {

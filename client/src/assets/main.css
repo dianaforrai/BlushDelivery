@@ -36,6 +36,7 @@
   align-items: center;
   height: 100vh;
   margin: 0;
+  text-align: center;
 }
 
 .text-center {
@@ -110,7 +111,26 @@ button[class="btn btn-primary"]:hover::before {
     color : rgb(99, 44, 52);
 }
 
-#content {
-  text-align: center;
+.home-btn {
+  background-color: var(--background-color1);
+  color: var(--heading-color);
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: slide-up-fade-in 1s ease;
+  transition: transform 0.5s ease;
 }
 
+.home-btn:hover {
+  transform: translateY(-5px);
+}
+
+.container-flowup {
+  animation: slide-up-fade-in 1s ease;
+  margin-top: 4rem;
+}

@@ -37,7 +37,7 @@ This project is a comprehensive delivery platform that includes a Spring Boot AP
 2. **Navigate to the backend directory**:
 
    ```bash
-   cd delivery-platform/scdproiect
+   cd delivery-platform/backend
    ```
 
    > NOTE: You should create an .env file with your `SMTP` password, and also modify the necessary data in the `MailConfig` class.

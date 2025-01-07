@@ -1,7 +1,7 @@
 <template>
     <div class="container-flowup">
         <h1>Package Details</h1>
-        <div v-if="packageData">
+        <div v-if="packageData !== null && packageData !== undefined">
             <p><strong>AWB:</strong> {{ packageData.awb }}</p>
             <p><strong>Created On:</strong> {{ packageData.createdOn }}</p>
             <p><strong>Delivery Address:</strong> {{ packageData.deliveryAddress }}</p>
@@ -11,7 +11,8 @@
             <p><strong>Courier:</strong> {{ packageData.courier ? packageData.courier.name : 'None' }}</p>
         </div>
         <div v-else>
-            <p>Loading package data...</p>
+            <p v-if="packageData === null">Loading package data...</p>
+            <p v-else="packageData === undefined">No package found with AWB: {{ awb }}</p>
         </div>
     </div>
     <button class="home-btn" :onclick="home">Home</button>
@@ -37,18 +38,19 @@ export default {
         },
         fetchPackage() {
             axios.get(`http://localhost:8083/packages/find`, {
-            params: {
-                awb: this.awb
-            },
-        })
-            .then(response => {
-                console.log(response);
-                var pack = response.data[0];
-                this.packageData = pack;
+                params: {
+                    awb: this.awb
+                },
             })
-            .catch(error => {
-                console.error("Error fetching package:", error);
-            });
+                .then(response => {
+                    console.log(response);
+                    var pack = response.data[0];
+                    console.log(pack);
+                    this.packageData = pack;
+                })
+                .catch(error => {
+                    console.error("Error fetching package:", error);
+                });
         }
     }
 }

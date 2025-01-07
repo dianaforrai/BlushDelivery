@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/blushdelivery.svg" alt="Blush Delivery logo" class="logo" style="width: 60%"/>
+  <img src="../assets/blushdelivery.svg" alt="Blush Delivery logo" class="logo" />
   <div class="button-container">
     <v-btn @click="availableCouriers()" class="btn-primary">
       <i class="fa-solid fa-right-from-bracket"></i>Available Couriers
@@ -7,7 +7,7 @@
     <v-btn @click="managersPackages()" class="btn-primary">
       <i class="fa-solid fa-right-from-bracket"></i>Managers and Packages
     </v-btn>
-    <input type="text" class="awb-search" placeholder="Enter AWB" v-model="awb"/>
+    <input type="text" class="awb-search" placeholder="Enter AWB" v-model="awb" />
     <v-btn @click="searchPackage()" class="btn-primary">
       <i class="fa-solid fa-right-from-bracket"></i>Search package
     </v-btn>
@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import logo from '../assets/blushdelivery.svg';
-
 export default {
   name: 'Home',
   data() {
@@ -44,6 +42,11 @@ export default {
 }
 </script>
 <style scoped>
+.logo {
+  width: 60%;
+  animation: slide-up-fade-in 1s ease;
+}
+
 .awb-search {
   width: 50%;
   padding: 0.5rem;

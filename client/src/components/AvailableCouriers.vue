@@ -13,7 +13,7 @@
         <tr v-for="courier in couriers" :key="courier.id">
           <th scope="row">{{ courier.id }}</th>
           <td>{{ courier.name }}</td>
-          <td>{{ courier.email ? 'Pay on Delivery' : 'Prepaid' }}</td>
+          <td>{{ courier.email }}</td>
           <td>{{ courier.manager ? courier.manager.name : 'None' }}</td>
         </tr>
       </tbody>
